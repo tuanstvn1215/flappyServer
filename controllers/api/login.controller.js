@@ -28,6 +28,20 @@ class LoginController {
     let password = req.body.password;
     let patt = /\w+/;
     res.set("Access-Control-Allow-Credentials", "true");
+    if (username.length > 16 || username.length < 1) {
+      res.send({
+        code: 0,
+        message: "Tài khoản chỉ chứa tối đa 16 kí tự",
+      });
+      return;
+    }
+    if (password.length < 1) {
+      res.send({
+        code: 0,
+        message: "Mật khẩu không được bỏ trống",
+      });
+      return;
+    }
     if (username.match(patt) != username) {
       res.send({
         code: 0,
@@ -70,6 +84,20 @@ class LoginController {
       let username = req.body.username;
       let password = req.body.password;
       let patt = /\w+/;
+      if (username.length > 16 || username.length < 1) {
+        res.send({
+          code: 0,
+          message: "Tài khoản chỉ chứa tối đa 16 kí tự",
+        });
+        return;
+      }
+      if (password.length < 1) {
+        res.send({
+          code: 0,
+          message: "Mật khẩu không được bỏ trống",
+        });
+        return;
+      }
       if (username.match(patt) != username) {
         res.json({
           code: 0,

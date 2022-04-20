@@ -1,7 +1,11 @@
 const Router = require("express").Router();
-
+const skinRoter = require("./api/skin.route");
 const loginRoter = require("./api/login.route");
 const chatRoter = require("./api/chat.route");
+const scoreRoter = require("./api/score.route");
+const authMiddleware = require("../middlewares/auth.middleware");
+Router.use("/skin", skinRoter);
 Router.use("/login", loginRoter);
 Router.use("/chat", chatRoter);
+Router.use("/score", scoreRoter);
 module.exports = Router;
